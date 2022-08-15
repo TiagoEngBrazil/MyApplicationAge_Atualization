@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">Idade</string>
+    <string name="year_birth">Digite o ano de nascimento:</string>
+    <string name="today_date">Qual a data de hoje?</string>
+    <string name="date">dia/mês/ano</string>
+    <string name="year">Ano</string>
+    <string name="monthOfBirth">mês</string>
+    <string name="dayOfBirth">dia</string>
+    <string name="my_age">Saber Idade</string>
+    <string name="type_answer_1">Quem nasceu em %1s, antes de %2s, ainda não completou 1 ano de vida</string>
+    <string name="type_answer_1.2">Quem nasceu em %1s/%2s, ainda não completou 1 ano de vida</string>
+    <string name="type_answer_1.3">Quem nasceu em %s ainda não completou 1 ano de vida</string>
+    <string name="empity_string" />
+    <string name="exception_gap_year">O ano de nascimento tem que ser maior que 1900 e menor que %s</string>
+    <string name="exception_year_of_birth">É obrigatório preencher o ano de nascimento!</string>
+    <string name="type_answer_2">Quem nasceu em %1s, antes de %2s, tem 1 ano de vida</string>
+    <string name="type_answer_2.2">Quem nasceu em %1s/%2s tem 1 ano de vida</string>
+    <string name="type_answer_2.3">Quem nasceu em %1s, antes de %2s ou em %3s, tem 1 ano de vida</string>
+    <string name="type_answer_2.4">Quem nasceu em %1s, depois de %2s, ainda não completou 1 ano de vida</string>
+    <string name="type_answer_4">Quem nasceu em %1s, antes de %2s, tem %3s anos</string>
+    <string name="type_answer_4.2">Quem nasceu em %1s/%2s tem %3s anos</string>
+    <string name="type_answer_5.1">Quem nasceu em %1s, depois de %2s, tem %3s anos</string>
+    <string name="type_answer_5.2">Quem nasceu em %1s, antes de %2s ou em %3s, tem %4s anos</string>
+    <string name="observation">Considerando a data de hoje (%s) fornecida pelo aparelho!</string>
+    <string name="day_and_month">O dia e mês de nascimento foi:</string>
+    <string name="before_of">Antes de %s</string>
+    <string name="in_">Em %s</string>
+    <string name="after_">Depois de %s</string>
+    <string name="dont_know">Não sei</string>
+    <string name="oldest_Year">1900</string>
+    <string name="exception_birth_after_today_date">"É impossível nascer depois de %s"</string>
+    <string name="validation_type_radioButton">"É preciso escolher uma das opções para dia e mês!"</string>
+    <string name="go_back">Voltar</string>
+    <string name="number_one">1</string>
+    <string name="recover_text1">recover_text1</string>
+    <string name="recover_text2">recover_text2</string>
+
+
+</resources>
