@@ -10,7 +10,8 @@ import com.example.myapplication.databinding.ActivityMainBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class
+MainActivity : AppCompatActivity(), View.OnClickListener {
 
     @SuppressLint("SimpleDateFormat")
     private val dateFormat: SimpleDateFormat = SimpleDateFormat("dd/MM")
@@ -131,6 +132,38 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                             todayDate.toString()
                         )
                 }
+            } else if (yearOfBirth == currentYear - getString(R.string.number_two).toInt()) {
+                if (binding.buttonRadio4.isChecked) {
+                    binding.textAnswer1.text =
+                        getString(
+                            R.string.type_answer_5_2,
+                            yearOfBirth.toString(),
+                            todayDate.toString(),
+                            todayDate.toString(),
+                            age1.toString()
+                        )
+                    binding.textAnswer2.text = getString(
+                        R.string.type_answer_5_3,
+                        yearOfBirth.toString(), todayDate.toString())
+                }
+                when {
+                    binding.buttonRadio1.isChecked -> binding.textAnswer1.text = getString(
+                        R.string.type_answer_4,
+                        yearOfBirth.toString(),
+                        todayDate.toString(), age1.toString()
+                    )
+                    binding.buttonRadio2.isChecked -> binding.textAnswer1.text =
+                        getString(
+                            R.string.type_answer_4_2, todayDate.toString(),
+                            yearOfBirth.toString(), age1.toString()
+                        )
+
+                    binding.buttonRadio3.isChecked -> binding.textAnswer1.text =
+                        getString(
+                            R.string.type_answer_5_3,
+                            yearOfBirth.toString(),
+                            todayDate.toString())
+                }
             } else {
                 if (binding.buttonRadio1.isChecked) {
                     binding.textAnswer1.text =
@@ -139,29 +172,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                             yearOfBirth.toString(),
                             todayDate.toString(), age1.toString()
                         )
-                    binding.textAnswer2.text =
-                        getString(
-                            R.string.empity_string
-                        )
                 } else if (binding.buttonRadio2.isChecked) {
                     binding.textAnswer1.text =
                         getString(
                             R.string.type_answer_4_2, todayDate.toString(),
                             yearOfBirth.toString(), age1.toString()
                         )
-                    binding.textAnswer2.text =
-                        getString(
-                            R.string.empity_string
-                        )
                 } else if (binding.buttonRadio3.isChecked) {
                     binding.textAnswer1.text =
                         getString(
                             R.string.type_answer_5_1,
                             yearOfBirth.toString(), todayDate.toString(), age2.toString()
-                        )
-                    binding.textAnswer2.text =
-                        getString(
-                            R.string.empity_string
                         )
                 } else if (binding.buttonRadio4.isChecked) {
                     binding.textAnswer1.text =
@@ -173,7 +194,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                             age1.toString()
                         )
                     binding.textAnswer2.text = getString(
-                        R.string.type_answer_5_1,
+                        R.string.type_answer_5_2,
                         yearOfBirth.toString(), todayDate.toString(), age2.toString()
                     )
                 }
