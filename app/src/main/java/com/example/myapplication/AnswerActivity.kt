@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityAnswerBinding
+import com.example.myapplication.databinding.ActivityMainBinding
 
 class AnswerActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -17,8 +18,6 @@ class AnswerActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.textAnswer1.text = intent.getStringExtra(getString(R.string.recover_text1))
         binding.textAnswer2.text = intent.getStringExtra(getString(R.string.recover_text2))
-
-
 
         binding.buttonGoBack.setOnClickListener(this)
 

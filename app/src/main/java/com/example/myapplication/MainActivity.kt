@@ -3,7 +3,9 @@ package com.example.myapplication
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.text.InputFilter
 import android.view.View
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityMainBinding
@@ -20,6 +22,7 @@ MainActivity : AppCompatActivity(), View.OnClickListener {
     private val dateFormat2: SimpleDateFormat = SimpleDateFormat("dd/MM/yyyy")
 
     private lateinit var binding: ActivityMainBinding
+    lateinit var editText: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,8 +40,30 @@ MainActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.buttonCalculate.setOnClickListener(this)
 
+//        title = "kotlinAPP"
+//        editText = findViewById(R.id.text_yearOfBirth)
+//        val maxNumberlength = 4
+//        editText.filters = arrayListOf<InputFilter>(InputFilter.LengthFilter)
+
+
+//        upDateText()
+
         supportActionBar?.hide()
+
+//        binding.textYearOfBirth.text.toString().length <= 4
     }
+
+//    private fun upDateText() {
+//        binding.textYearOfBirth.setOnClickListener {
+//          if (binding.textYearOfBirth.length().toString().toInt() == 4) hideKeyBoard(binding.textYearOfBirth)
+//        }
+//    }
+//
+//    private fun hideKeyBoard(v: View) {
+//        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+//        imm.hideSoftInputFromWindow(v.windowToken, 0)
+//    }
+
 
     override fun onClick(v: View) {
         if (v.id == R.id.button_calculate) {
@@ -49,8 +74,9 @@ MainActivity : AppCompatActivity(), View.OnClickListener {
     private fun validation1(): Boolean {
         val calendar = Calendar.getInstance()
         val currentYear = calendar.get(Calendar.YEAR)
-        return binding.textYearOfBirth.text.toString()
-            .toInt() in (getString(R.string.oldest_Year).toInt()..currentYear)
+        return !(((binding.textYearOfBirth.text.toString()
+            .toInt() < R.string.oldest_Year) && (binding.textYearOfBirth.text.toString()
+            .toInt() > currentYear)))
     }
 
     private fun validation2(): Boolean {
@@ -64,6 +90,29 @@ MainActivity : AppCompatActivity(), View.OnClickListener {
         return yearOfBirth == currentYear && binding.buttonRadio3.isChecked
     }
 
+    private fun validation4(): Boolean {
+        val calendar = Calendar.getInstance()
+        return dateFormat.format(calendar.time) == "01/08" && binding.buttonRadio1.isChecked
+    }
+
+    private fun validation5(): Boolean {
+        val calendar = Calendar.getInstance()
+        return dateFormat.format(calendar.time) == "31/12" && binding.buttonRadio3.isChecked
+    }
+
+    private fun validation6(): Boolean {
+        val calendar = Calendar.getInstance()
+        return dateFormat.format(calendar.time)
+            .toString() == "01/01" && binding.buttonRadio4.isChecked
+    }
+
+    private fun validation7(): Boolean {
+        val calendar = Calendar.getInstance()
+        return dateFormat.format(calendar.time)
+            .toString() == "31/12" && binding.buttonRadio4.isChecked
+    }
+
+
     @SuppressLint("ShowToast")
     private fun calculate() {
 
@@ -74,7 +123,7 @@ MainActivity : AppCompatActivity(), View.OnClickListener {
         val todayDate2 = dateFormat2.format(calendar.time)
 
 
-        if (yearOfBirth != null && validation1() && validation2() && !validation3()) {
+        if (yearOfBirth != null && validation1() && validation2() && !validation3() && !validation4() && !validation5() && !validation6() && !validation7()) {
             val age1 = currentYear - yearOfBirth
             val age2 = currentYear - yearOfBirth - getString(R.string.number_one).toInt()
 
@@ -100,30 +149,31 @@ MainActivity : AppCompatActivity(), View.OnClickListener {
                 }
 
             } else if (yearOfBirth == currentYear - getString(R.string.number_one).toInt()) {
-                if (binding.buttonRadio1.isChecked) {
-                    binding.textAnswer1.text =
-                        getString(
-                            R.string.type_answer_2, yearOfBirth.toString(),
-                            todayDate.toString()
-                        )
-                } else if (binding.buttonRadio2.isChecked) {
-                    binding.textAnswer1.text =
+
+                when {
+                    binding.buttonRadio1.isChecked -> binding.textAnswer1.text = getString(
+                        R.string.type_answer_2, yearOfBirth.toString(),
+                        todayDate.toString()
+
+                    )
+                    binding.buttonRadio2.isChecked -> binding.textAnswer1.text =
                         getString(
                             R.string.type_answer_2_2, todayDate.toString(), yearOfBirth.toString()
                         )
-                } else if (binding.buttonRadio3.isChecked) {
-                    binding.textAnswer1.text =
+                    binding.buttonRadio3.isChecked -> binding.textAnswer1.text =
                         getString(
                             R.string.type_answer_2_4,
                             yearOfBirth.toString(),
                             todayDate.toString(),
                             todayDate.toString()
                         )
-                } else if (binding.buttonRadio4.isChecked) {
+                }
+
+                if (binding.buttonRadio4.isChecked) {
                     binding.textAnswer1.text =
                         getString(
                             R.string.type_answer_2_3,
-                            yearOfBirth.toString(), todayDate.toString(), todayDate
+                            yearOfBirth.toString(), todayDate.toString(), todayDate.toString()
                         )
                     binding.textAnswer2.text =
                         getString(
@@ -132,19 +182,31 @@ MainActivity : AppCompatActivity(), View.OnClickListener {
                             todayDate.toString()
                         )
                 }
+
             } else if (yearOfBirth == currentYear - getString(R.string.number_two).toInt()) {
-                if (binding.buttonRadio4.isChecked) {
-                    binding.textAnswer1.text =
+                if (validation6()) {
+                    binding.textAnswer1.text = getString(
+                        R.string.type_answer_4_2, todayDate.toString(),
+                        yearOfBirth.toString(), age1.toString()
+                    )
+                    binding.textAnswer2.text =
                         getString(
-                            R.string.type_answer_5_2,
+                            R.string.type_answer_5_3,
                             yearOfBirth.toString(),
-                            todayDate.toString(),
+                            todayDate.toString()
+                        )
+                } else if (validation7()) {
+                    binding.textAnswer1.text = getString(
+                        R.string.type_answer_4_2, todayDate.toString(),
+                        yearOfBirth.toString(), age1.toString()
+                    )
+                    binding.textAnswer2.text =
+                        getString(
+                            R.string.type_answer_4,
+                            yearOfBirth.toString(),
                             todayDate.toString(),
                             age1.toString()
                         )
-                    binding.textAnswer2.text = getString(
-                        R.string.type_answer_5_3,
-                        yearOfBirth.toString(), todayDate.toString())
                 }
                 when {
                     binding.buttonRadio1.isChecked -> binding.textAnswer1.text = getString(
@@ -162,7 +224,22 @@ MainActivity : AppCompatActivity(), View.OnClickListener {
                         getString(
                             R.string.type_answer_5_3,
                             yearOfBirth.toString(),
-                            todayDate.toString())
+                            todayDate.toString()
+                        )
+                }
+                if (binding.buttonRadio4.isChecked) {
+                    binding.textAnswer1.text =
+                        getString(
+                            R.string.type_answer_5_2,
+                            yearOfBirth.toString(),
+                            todayDate.toString(),
+                            todayDate.toString(),
+                            age1.toString()
+                        )
+                    binding.textAnswer2.text = getString(
+                        R.string.type_answer_5_3,
+                        yearOfBirth.toString(), todayDate.toString()
+                    )
                 }
             } else {
                 if (binding.buttonRadio1.isChecked) {
@@ -194,7 +271,7 @@ MainActivity : AppCompatActivity(), View.OnClickListener {
                             age1.toString()
                         )
                     binding.textAnswer2.text = getString(
-                        R.string.type_answer_5_2,
+                        R.string.type_answer_5_1,
                         yearOfBirth.toString(), todayDate.toString(), age2.toString()
                     )
                 }
@@ -227,8 +304,81 @@ MainActivity : AppCompatActivity(), View.OnClickListener {
                 ),
                 Toast.LENGTH_SHORT
             ).show()
+        } else if (validation4()) {
+            Toast.makeText(
+                this,
+                getString(
+                    R.string.exception_birth_before_day_one,
+                    yearOfBirth.toString(),
+                    todayDate.toString()
+                ),
+                Toast.LENGTH_SHORT
+            ).show()
+        } else if (validation5()) {
+            Toast.makeText(
+                this,
+                getString(
+                    R.string.exception_birth_after_day_last,
+                    yearOfBirth.toString(),
+                    todayDate.toString()
+                ),
+                Toast.LENGTH_SHORT
+            ).show()
+        } else if (validation6() && yearOfBirth == currentYear - getString(R.string.number_one).toInt()) {
+            binding.textAnswer1.text = getString(
+                R.string.type_answer_2_2, todayDate.toString(),
+                yearOfBirth.toString()
+            )
+            binding.textAnswer2.text = getString(
+                R.string.type_answer_2_4,
+                yearOfBirth.toString(), todayDate.toString()
+            )
+            val intent = Intent(this, AnswerActivity::class.java)
+            intent.putExtra(getString(R.string.recover_text1), binding.textAnswer1.text.toString())
+            intent.putExtra(getString(R.string.recover_text2), binding.textAnswer2.text.toString())
+            startActivity(intent)
+
+        } else if (validation7() && (yearOfBirth == currentYear - getString(R.string.number_one).toInt())) {
+            binding.textAnswer1.text = getString(
+                R.string.type_answer_2_2, todayDate.toString(),
+                yearOfBirth.toString()
+            )
+            binding.textAnswer2.text =
+                getString(
+                    R.string.type_answer_2, yearOfBirth.toString(), todayDate.toString()
+                )
+            val intent = Intent(this, AnswerActivity::class.java)
+            intent.putExtra(getString(R.string.recover_text1), binding.textAnswer1.text.toString())
+            intent.putExtra(getString(R.string.recover_text2), binding.textAnswer2.text.toString())
+            startActivity(intent)
+        } else if (validation6() && (yearOfBirth == currentYear - getString(R.string.number_two).toInt())) {
+            val age1 = currentYear - yearOfBirth
+            binding.textAnswer1.text = getString(
+                R.string.type_answer_4_2, todayDate.toString(),
+                yearOfBirth.toString(), age1.toString()
+            )
+            binding.textAnswer2.text =
+                getString(
+                    R.string.type_answer_5_3,
+                    yearOfBirth.toString(),
+                    todayDate.toString()
+                )
+            val intent = Intent(this, AnswerActivity::class.java)
+            intent.putExtra(getString(R.string.recover_text1), binding.textAnswer1.text.toString())
+            intent.putExtra(getString(R.string.recover_text2), binding.textAnswer2.text.toString())
+            startActivity(intent)
+        } else if (validation7() && yearOfBirth == currentYear - getString(R.string.number_two).toInt()) {
+            val age1 = currentYear - yearOfBirth
+            binding.textAnswer1.text = getString(
+                R.string.type_answer_5_2, yearOfBirth.toString(), todayDate.toString(), todayDate.toString()
+                , age1.toString()
+            )
+
+            val intent = Intent(this, AnswerActivity::class.java)
+            intent.putExtra(getString(R.string.recover_text1), binding.textAnswer1.text.toString())
+            intent.putExtra(getString(R.string.recover_text2), binding.textAnswer2.text.toString())
+            startActivity(intent)
         }
-
     }
-
 }
+

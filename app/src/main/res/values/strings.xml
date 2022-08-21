@@ -30,12 +30,16 @@
     <string name="dont_know">Não sei</string>
     <string name="oldest_Year">1900</string>
     <string name="exception_birth_after_today_date">"É impossível nascer depois de %s"</string>
+    <string name="exception_birth_before_day_one">"É impossível nascer em %1s antes de %2s"</string>
+    <string name="exception_birth_after_day_last">"É impossível nascer em %1s depois de %2s"</string>
     <string name="validation_type_radioButton">"É preciso escolher uma das opções para dia e mês!"</string>
     <string name="go_back">Voltar</string>
     <string name="number_one">1</string>
     <string name="number_two">2</string>
     <string name="recover_text1" tools:ignore="Typos">recover_text1</string>
     <string name="recover_text2">recover_text2</string>
+    <string name="first_day_of_year">"20/08"</string>
+    <string name="last_day_of_year">21/08</string>
 
 
 </resources>

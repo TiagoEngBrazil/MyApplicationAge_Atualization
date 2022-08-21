@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AnswerActivity">
+    tools:context=".AnswerActivity"
+    android:padding="5dp">
 
     <ImageView
         android:id="@+id/image_evolution"
@@ -21,8 +22,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="@string/empity_string"
         android:padding="23dp"
+        android:text="@string/empity_string"
         android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold"
@@ -31,11 +32,11 @@
         app:layout_constraintTop_toBottomOf="@id/image_evolution" />
 
     <TextView
-        android:padding="23dp"
         android:id="@+id/text_answer2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:padding="23dp"
         android:text="@string/empity_string"
         android:textColor="@color/black"
         android:textSize="25sp"
@@ -51,13 +52,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginTop="30dp"
         android:text="@string/go_back"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:ignore="SpUsage,TextViewEdits" />
-
+        tools:ignore="SpUsage,TextViewEdits"
+        app:layout_constraintTop_toBottomOf="@id/text_answer2"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
