@@ -1,10 +1,12 @@
 package com.example.myapplication
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.InputFilter
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -12,8 +14,7 @@ import com.example.myapplication.databinding.ActivityMainBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
-class
-MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     @SuppressLint("SimpleDateFormat")
     private val dateFormat: SimpleDateFormat = SimpleDateFormat("dd/MM")
@@ -22,7 +23,6 @@ MainActivity : AppCompatActivity(), View.OnClickListener {
     private val dateFormat2: SimpleDateFormat = SimpleDateFormat("dd/MM/yyyy")
 
     private lateinit var binding: ActivityMainBinding
-    lateinit var editText: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,29 +40,28 @@ MainActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.buttonCalculate.setOnClickListener(this)
 
-//        title = "kotlinAPP"
-//        editText = findViewById(R.id.text_yearOfBirth)
-//        val maxNumberlength = 4
-//        editText.filters = arrayListOf<InputFilter>(InputFilter.LengthFilter)
-
+        binding.textYearOfBirth.setMaxLength(4)
 
 //        upDateText()
 
         supportActionBar?.hide()
-
-//        binding.textYearOfBirth.text.toString().length <= 4
     }
 
 //    private fun upDateText() {
 //        binding.textYearOfBirth.setOnClickListener {
-//          if (binding.textYearOfBirth.length().toString().toInt() == 4) hideKeyBoard(binding.textYearOfBirth)
+//          if (binding.textYearOfBirth.length() == 4) hideKeyBoard(it)
 //        }
 //    }
 //
+//    @SuppressLint("ServiceCast")
 //    private fun hideKeyBoard(v: View) {
 //        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
 //        imm.hideSoftInputFromWindow(v.windowToken, 0)
 //    }
+
+    fun EditText.setMaxLength(maxLength: Int){
+        filters = arrayOf<InputFilter>(InputFilter.LengthFilter(maxLength))
+    }
 
 
     override fun onClick(v: View) {
@@ -370,8 +369,11 @@ MainActivity : AppCompatActivity(), View.OnClickListener {
         } else if (validation7() && yearOfBirth == currentYear - getString(R.string.number_two).toInt()) {
             val age1 = currentYear - yearOfBirth
             binding.textAnswer1.text = getString(
-                R.string.type_answer_5_2, yearOfBirth.toString(), todayDate.toString(), todayDate.toString()
-                , age1.toString()
+                R.string.type_answer_5_2,
+                yearOfBirth.toString(),
+                todayDate.toString(),
+                todayDate.toString(),
+                age1.toString()
             )
 
             val intent = Intent(this, AnswerActivity::class.java)
