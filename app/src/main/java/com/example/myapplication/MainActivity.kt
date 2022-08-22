@@ -10,6 +10,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doAfterTextChanged
 import com.example.myapplication.databinding.ActivityMainBinding
 import java.text.SimpleDateFormat
 import java.util.*
@@ -42,24 +43,22 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.textYearOfBirth.setMaxLength(4)
 
-//        upDateText()
+        binding.textYearOfBirth.doAfterTextChanged {
+            if (binding.textYearOfBirth.length() == 4) {
+               hideKeyBoard(binding.textYearOfBirth)
+            }
+        }
 
         supportActionBar?.hide()
     }
 
-//    private fun upDateText() {
-//        binding.textYearOfBirth.setOnClickListener {
-//          if (binding.textYearOfBirth.length() == 4) hideKeyBoard(it)
-//        }
-//    }
-//
-//    @SuppressLint("ServiceCast")
-//    private fun hideKeyBoard(v: View) {
-//        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-//        imm.hideSoftInputFromWindow(v.windowToken, 0)
-//    }
+    @SuppressLint("ServiceCast")
+    private fun hideKeyBoard(v: View) {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(v.windowToken, 0)
+    }
 
-    fun EditText.setMaxLength(maxLength: Int){
+    fun EditText.setMaxLength(maxLength: Int) {
         filters = arrayOf<InputFilter>(InputFilter.LengthFilter(maxLength))
     }
 
