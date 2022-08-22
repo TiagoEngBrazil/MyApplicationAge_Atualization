@@ -38,8 +38,8 @@
     <string name="number_two">2</string>
     <string name="recover_text1" tools:ignore="Typos">recover_text1</string>
     <string name="recover_text2">recover_text2</string>
-    <string name="first_day_of_year">"20/08"</string>
-    <string name="last_day_of_year">21/08</string>
+    <string name="first_day_of_year">01/01</string>
+    <string name="last_day_of_year">31/12</string>
 
 
 </resources>
