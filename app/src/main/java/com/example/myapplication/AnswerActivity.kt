@@ -24,6 +24,7 @@ class AnswerActivity : AppCompatActivity(), View.OnClickListener {
         supportActionBar?.hide()
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         startActivity(Intent(this, MainActivity::class.java))
         onRestart()
