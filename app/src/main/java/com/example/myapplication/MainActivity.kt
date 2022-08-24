@@ -100,6 +100,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         return dateFormat.format(calendar.time) == "31/12" && binding.buttonRadio3.isChecked
     }
 
+    //    I tried change the hardcode string "01/01" for R.string.first_day_of_year, but the kotlin don´t recognize this equality°!
     private fun validation6(): Boolean {
 
         val yearOfBirth = binding.textYearOfBirth.text.toString().toInt()
@@ -110,6 +111,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             .toString() == "01/01" && binding.buttonRadio4.isChecked && currentYear != yearOfBirth
     }
 
+    //    I tried change the hardcoded string "31/12" for R.string.last day_of_year, but the kotlin don't recognize this equality!
     private fun validation7(): Boolean {
         val yearOfBirth = binding.textYearOfBirth.text.toString().toInt()
         val calendar = Calendar.getInstance()
