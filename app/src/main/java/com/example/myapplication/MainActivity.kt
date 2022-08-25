@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         imm.hideSoftInputFromWindow(v.windowToken, 0)
     }
 
-    fun EditText.setMaxLength(maxLength: Int) {
+    private fun EditText.setMaxLength(maxLength: Int) {
         filters = arrayOf<InputFilter>(InputFilter.LengthFilter(maxLength))
     }
 

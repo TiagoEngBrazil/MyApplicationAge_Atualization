@@ -1,8 +1,10 @@
 package com.example.myapplication
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityAnswerBinding
 import com.example.myapplication.databinding.ActivityMainBinding
@@ -23,6 +25,7 @@ class AnswerActivity : AppCompatActivity(), View.OnClickListener {
 
         supportActionBar?.hide()
     }
+
 
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
