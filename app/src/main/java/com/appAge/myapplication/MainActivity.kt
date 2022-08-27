@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.appAge.myapplication
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -11,7 +11,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
-import com.example.myapplication.databinding.ActivityMainBinding
+import com.appAge.myapplication.databinding.ActivityMainBinding
 import java.text.SimpleDateFormat
 import java.util.*
 

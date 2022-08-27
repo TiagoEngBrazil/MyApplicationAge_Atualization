@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.myapplication">
+    package="com.appAge.myapplication">
 
     <application
         android:allowBackup="true"
@@ -14,14 +14,14 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
-            android:name=".AnswerActivity"
+            android:name="com.appAge.myapplication.AnswerActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateVisible|adjustResize"
             tools:ignore="lockedOrientationActivity"/>
 
         <activity
-            android:name=".MainActivity"
+            android:name="com.appAge.myapplication.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateVisible|adjustResize"

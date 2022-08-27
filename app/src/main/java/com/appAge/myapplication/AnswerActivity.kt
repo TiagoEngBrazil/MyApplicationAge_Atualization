@@ -1,11 +1,11 @@
-package com.example.myapplication
+package com.appAge.myapplication
 
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myapplication.databinding.ActivityAnswerBinding
+import com.appAge.myapplication.databinding.ActivityAnswerBinding
 
 class AnswerActivity : AppCompatActivity(), View.OnClickListener {
 
