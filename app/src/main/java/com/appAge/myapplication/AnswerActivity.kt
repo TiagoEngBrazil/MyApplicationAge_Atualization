@@ -28,11 +28,14 @@ class AnswerActivity : AppCompatActivity(), View.OnClickListener {
     @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         startActivity(Intent(this, MainActivity::class.java))
+        finish()
         onRestart()
     }
 
     override fun onClick(v: View?) {
         startActivity(Intent(this, MainActivity::class.java))
+        finish()
         onRestart()
     }
+
 }

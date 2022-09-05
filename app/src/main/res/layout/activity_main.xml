@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/imageapp"
     android:padding="10dp"
-    >
+    tools:ignore="MissingClass">
 
     <ScrollView
         android:id="@+id/scrollView"

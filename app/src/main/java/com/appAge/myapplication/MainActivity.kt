@@ -52,6 +52,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         supportActionBar?.hide()
     }
 
+
     @SuppressLint("ServiceCast")
     private fun hideKeyBoard(v: View) {
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -264,10 +265,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             intent.putExtra(getString(R.string.recover_text2), binding.textAnswer2.text.toString())
             startActivity(intent)
 
+            finish()
         } else if (yearOfBirth == null) {
             Toast.makeText(this, R.string.exception_year_of_birth, Toast.LENGTH_SHORT)
                 .show()
-            return
         } else if (!validation1()) {
             Toast.makeText(
                 this, getString(R.string.exception_gap_year, currentYear.toString()),
@@ -320,7 +321,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             intent.putExtra(getString(R.string.recover_text1), binding.textAnswer1.text.toString())
             intent.putExtra(getString(R.string.recover_text2), binding.textAnswer2.text.toString())
             startActivity(intent)
-
+            finish()
         } else if (validation7() && (yearOfBirth == currentYear - getString(R.string.number_one).toInt())) {
             binding.textAnswer1.text = getString(
                 R.string.type_answer_2_2, todayDate.toString(),
@@ -334,6 +335,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             intent.putExtra(getString(R.string.recover_text1), binding.textAnswer1.text.toString())
             intent.putExtra(getString(R.string.recover_text2), binding.textAnswer2.text.toString())
             startActivity(intent)
+            finish()
         } else if (validation6() && (yearOfBirth == currentYear - getString(R.string.number_two).toInt())) {
             val age1 = currentYear - yearOfBirth
             binding.textAnswer1.text = getString(
@@ -350,6 +352,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             intent.putExtra(getString(R.string.recover_text1), binding.textAnswer1.text.toString())
             intent.putExtra(getString(R.string.recover_text2), binding.textAnswer2.text.toString())
             startActivity(intent)
+            finish()
         } else if (validation7() && yearOfBirth == currentYear - getString(R.string.number_two).toInt()) {
             val age1 = currentYear - yearOfBirth
             binding.textAnswer1.text = getString(
@@ -364,6 +367,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             intent.putExtra(getString(R.string.recover_text1), binding.textAnswer1.text.toString())
             intent.putExtra(getString(R.string.recover_text2), binding.textAnswer2.text.toString())
             startActivity(intent)
+            finish()
         } else if (validation6() && (yearOfBirth < currentYear - getString(R.string.number_two).toInt())) {
             val age1 = currentYear - yearOfBirth
             binding.textAnswer1.text = getString(
@@ -380,6 +384,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             intent.putExtra(getString(R.string.recover_text1), binding.textAnswer1.text.toString())
             intent.putExtra(getString(R.string.recover_text2), binding.textAnswer2.text.toString())
             startActivity(intent)
+            finish()
         } else if (validation7() && yearOfBirth < currentYear - getString(R.string.number_two).toInt()) {
             val age1 = currentYear - yearOfBirth
             binding.textAnswer1.text = getString(
@@ -394,8 +399,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             intent.putExtra(getString(R.string.recover_text1), binding.textAnswer1.text.toString())
             intent.putExtra(getString(R.string.recover_text2), binding.textAnswer2.text.toString())
             startActivity(intent)
+            finish()
         }
     }
-
 }
 
