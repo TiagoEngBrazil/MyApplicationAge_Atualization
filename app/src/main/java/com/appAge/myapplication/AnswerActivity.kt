@@ -22,6 +22,7 @@ class AnswerActivity : AppCompatActivity(), View.OnClickListener {
         binding.buttonGoBack.setOnClickListener(this)
 
         supportActionBar?.hide()
+
     }
 
 
