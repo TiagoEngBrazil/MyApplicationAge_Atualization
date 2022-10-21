@@ -73,9 +73,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private fun validation1(): Boolean {
         val calendar = Calendar.getInstance()
         val currentYear = calendar.get(Calendar.YEAR)
-        return !(((binding.textYearOfBirth.text.toString()
-            .toInt() < R.string.oldest_Year) && (binding.textYearOfBirth.text.toString()
-            .toInt() > currentYear)))
+        return (((binding.textYearOfBirth.text.toString()
+            .toInt() > 1900) && (binding.textYearOfBirth.text.toString()
+            .toInt() < currentYear)))
     }
 
     private fun validation2(): Boolean {
